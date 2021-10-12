@@ -1,5 +1,5 @@
-*{
-  transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+* {
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 body {
@@ -12,47 +12,47 @@ body {
 }
 
 a {
-  color: white !important; 
+  color: white !important;
 }
 
-.active{
-  color: #00ADB5 !important;
+.active {
+  color: #00adb5 !important;
   border-bottom: 1px solid #00adb5;
 }
 
-h3::before{
+h3::before {
   content: "#";
-  color: #00ADB5;
+  color: #00adb5;
   margin-right: 4px;
   font-weight: lighter;
 }
 
-pop{
-  color: #00ADB5;
+pop {
+  color: #00adb5;
   font-weight: bold;
 }
 
-.img-thumbnail{
-  background-color: #393E46 !important;
+.img-thumbnail {
+  background-color: #393e46 !important;
   border: none !important;
 }
 
-a{
+a {
   cursor: pointer;
 }
 
-a:hover{
+a:hover {
   color: #00adb5 !;
 }
 
-.list-projects div{
-  background-color: #393E46;
+.list-projects div {
+  background-color: #393e46;
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
 
-.clickable:hover{
+.clickable:hover {
   transform: scale(1.038);
 }
