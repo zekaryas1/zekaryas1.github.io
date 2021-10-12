@@ -1,0 +1,58 @@
+*{
+  transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+body {
+  background-color: #222831;
+  color: white;
+}
+
+.btn {
+  background-color: #00adb5;
+}
+
+a {
+  color: white !important; 
+}
+
+.active{
+  color: #00ADB5 !important;
+  border-bottom: 1px solid #00adb5;
+}
+
+h3::before{
+  content: "#";
+  color: #00ADB5;
+  margin-right: 4px;
+  font-weight: lighter;
+}
+
+pop{
+  color: #00ADB5;
+  font-weight: bold;
+}
+
+.img-thumbnail{
+  background-color: #393E46 !important;
+  border: none !important;
+}
+
+a{
+  cursor: pointer;
+}
+
+a:hover{
+  color: #00adb5 !;
+}
+
+.list-projects div{
+  background-color: #393E46;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.clickable:hover{
+  transform: scale(1.038);
+}

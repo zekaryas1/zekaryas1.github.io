@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <title>Zekaryas Tadele</title>
+  </head>
+  <body class="p-4">
+    <div id="app">
+      <div class="navigation">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Zekaryas Tadele</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#lang">Languages/Frameworks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacts">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link btn btn-primary text-light"
+              v-on:click="openCvLink()"
+            >
+              CV
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- main header -->
+      <div
+        class="main-header d-flex justify-content-center align-content-end m-4"
+      >
+        <div
+          class="col-lg-4 col-sm-2 d-flex flex-column justify-content-center"
+        >
+          <h4>About me!</h4>
+          <p class="text-muted" id="typed">
+            <pop>Zekaryas Tadele</pop> is a software engineer who is always
+            looking for ways to solve challenges. He's polished his
+            analytical thinking and collaborative abilities throughout the years
+            in this profession, and he enjoys working with others.
+          </p>
+        </div>
+        <img src="./bighead.svg" class="w-25 m-0 img-fluid" alt="" srcset="" />
+      </div>
+      <!-- end main header -->
+
+      <!-- start languages section -->
+      <div class="languages" id="lang">
+        <h3 class="fw-bold">Languages/Frameworks</h3>
+        <ul class="nav">
+          <li class="nav-item">
+            <a
+              class="nav-link ps-0"
+              v-bind:class="{ active: current_languages_filter=='P' }"
+              aria-current="page"
+              v-on:click="changeLanguageContent('P')"
+              >Programming languages</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: current_languages_filter=='B' }"
+              v-on:click="changeLanguageContent('B')"
+              >Backend Frameworks</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: current_languages_filter=='F' }"
+              v-on:click="changeLanguageContent('F')"
+              >Frontend Frameworks</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              v-bind:class="{ active: current_languages_filter=='O' }"
+              v-on:click="changeLanguageContent('O')"
+              >Others</a
+            >
+          </li>
+        </ul>
+        <div class="list-languages row mt-3">
+          <img
+            v-for="progLanguage in current_languages_frameworks"
+            v-bind:src="progLanguage.image"
+            v-bind:title="progLanguage.name"
+            class="rounded img-thumbnail col-3 ms-2 me-3 mb-3 clickable"
+            style="height: 150px; width: 150px"
+            v-on:click="openLink(progLanguage.link)"
+          />
+        </div>
+      </div>
+      <!-- end languages section -->
+
+      <!-- start projects -->
+      <div class="projects mt-4" style="padding-top: 7em" id="projects">
+        <h3 class="fw-bold">Projects</h3>
+        <p class="text-muted">
+          Below is a list of personal projects that I worked on to solve
+          challenges.
+        </p>
+        <div class="list-projects">
+          <div
+            v-for="project in projects"
+            class="d-flex mt-3 w-75 rounded p-3 clickable"
+            v-on:click="openLink(project.link)"
+          >
+            <img
+              v-bind:src="project.image"
+              class="img-thumbnail align-self-center"
+              style="height: 100px; width: 100px"
+              alt="..."
+            />
+            <div class="d-flex flex-column ms-3 align-self-center">
+              <h4 class="fw-bolder">{{ project.name }}</h4>
+              <p class="text-muted" style="margin-top: -4px">
+                {{ project.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end projects -->
+
+      <!-- start contact -->
+      <div class="contacts mt-4" style="padding-top: 7em" id="contacts">
+        <h3 class="fw-bold">Contacts</h3>
+        <p class="text-muted">
+          Please do not hesitate to contact me using the information below.
+        </p>
+        <div class="list-contact d-flex">
+          <img
+            v-for="contact in contacts"
+            class="img-thumbnail col-1 me-4 clickable"
+            v-bind:src="contact.image"
+            alt=""
+            srcset=""
+            v-on:click="openLink(contact.link)"
+          />
+        </div>
+      </div>
+
+      <!-- end contact -->
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        cvLink:
+          "https://docs.google.com/document/d/10G8K8sysADjlcOyqQkfLV_RhnY4NrumdQ-cOT_3vMJo/edit?usp=sharing",
+        current_languages_filter: "P",
+        current_languages_frameworks: [],
+        languages_frameworks: [
+          // P=programming, F=framework and O=other
+          {
+            name: "Python",
+            image: "https://img.icons8.com/fluency/96/000000/python.png",
+            tag: "P",
+            link: "https://www.python.org/",
+          },
+          {
+            name: "Javascript",
+            image: "https://img.icons8.com/color/96/000000/javascript--v2.png",
+            tag: "P",
+            link: "https://en.wikipedia.org/wiki/JavaScript",
+          },
+          {
+            name: "Kotlin",
+            image: "https://img.icons8.com/color/96/ffffff/kotlin.png",
+            tag: "P",
+            link: "https://kotlinlang.org/",
+          },
+
+          {
+            name: "Node.js",
+            image: "https://img.icons8.com/color/96/ffffff/nodejs.png",
+            tag: "B",
+            link: "https://nodejs.org/",
+          },
+          {
+            name: "Laravel",
+            image: "https://img.icons8.com/fluency/96/ffffff/laravel.png",
+            tag: "B",
+            link: "https://laravel.com/",
+          },
+          {
+            name: "Spring Boot",
+            image: "https://img.icons8.com/color/96/ffffff/spring-logo.png",
+            tag: "B",
+            link: "https://spring.io/projects/spring-boot",
+          },
+          {
+            name: "React",
+            image: "https://img.icons8.com/plasticine/100/ffffff/react.png",
+            tag: "F",
+            link: "https://reactjs.org/",
+          },
+          {
+            name: "Flutter",
+            image: "https://img.icons8.com/color/96/ffffff/flutter.png",
+            tag: "F",
+            link: "https://flutter.dev/",
+          },
+          {
+            name: "Docker",
+            image: "https://img.icons8.com/color/96/ffffff/docker.png",
+            tag: "O",
+            link: "https://www.docker.com/",
+          },
+          {
+            name: "Git",
+            image: "https://img.icons8.com/color/96/ffffff/git.png",
+            tag: "O",
+            link: "https://git-scm.com/",
+          },
+          {
+            name: "GraphQl",
+            image: "https://img.icons8.com/color/96/ffffff/graphql.png",
+            tag: "O",
+            link: "https://graphql.org/",
+          },
+          {
+            name: "User interface design",
+            image: "https://img.icons8.com/color/96/ffffff/design--v1.png",
+            tag: "O",
+            link: "https://en.wikipedia.org/wiki/User_interface",
+          },
+        ],
+        projects: [
+          {
+            name: "Phoenix programming",
+            description:
+              "An app to learn coding, programming languages, UI design, and SEO. Fellow coders can learn here new programming languages, new programming frameworks, and best practices.",
+            image:
+              "https://play-lh.googleusercontent.com/pIXmlPUa1Im318dPTDzp463IkNR94MGIH8t8ju8viVRFcyIYxTMZG8vzjRI4lSBspTNh=s180-rw",
+            link: "https://play.google.com/store/apps/details?id=com.zekaryastadele.phoenix_for_programmers",
+          },
+          {
+            name: "Phoenix Quote",
+            description:
+              "Phoenix Quote is a free app that allows you to discover many types of gorgeous quotes. By using Phoenix Quote, one can find quotes about life, love, hope, peace, change, best friend, and many other categories.",
+            image:
+              "https://play-lh.googleusercontent.com/2p-ysPI2AbAfGGOzzuRWMBA03vBTcNjytzRti55BLy7SCexKJ2sTPucMIbyK-IIy=s180-rw",
+            link: "https://play.google.com/store/apps/details?id=com.zekaryastadele.best_quotes_by_phoenix",
+          },
+          {
+            name: "Github Projects",
+            description:
+              "A list of publicly available projects that I've worked on can be found here.",
+            image:
+              "https://img.icons8.com/material-outlined/96/ffffff/github.png",
+            link: "https://github.com/zekaryas1",
+          },
+        ],
+        contacts: [
+          {
+            image: "https://img.icons8.com/color/96/ffffff/gmail-new.png",
+            link: "mailto:zekaryasdinku@gmail.com",
+          },
+          {
+            image:
+              "https://img.icons8.com/color/96/ffffff/telegram-app--v1.png",
+            link: "tg://resolve?domain=zekaryastadele",
+          },
+          {
+            image: "https://img.icons8.com/color/96/ffffff/linkedin.png",
+            link: "http://www.linkedin.com/in/zekaryas-tadele-dinku",
+          },
+        ],
+      },
+      created: function () {
+        this.changeLanguageContent("P");
+      },
+      methods: {
+        changeLanguageContent: function (filter) {
+          this.current_languages_filter = filter;
+          this.current_languages_frameworks = this.languages_frameworks.filter(
+            (it) => it.tag == filter
+          );
+        },
+        openLink: function (link) {
+          window.open(link);
+        },
+        openCvLink: function () {
+          this.openLink(this.cvLink);
+        },
+      },
+    });
+  </script>
+</html>
