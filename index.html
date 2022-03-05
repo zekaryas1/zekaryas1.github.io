@@ -110,12 +110,70 @@
             profession, and he enjoys working with others.
           </p>
         </div>
-        <img src="./bighead.svg" class="w-25 m-0 img-fluid" alt="" srcset="" />
+        <img src="./bighead.png" class="w-25 m-0 img-fluid" style="filter: brightness(0.4);" alt="" srcset="" />
       </div>
       <!-- end main header -->
 
+      <!-- professional experience -->
+      <div class="professional-expriance">
+        <h3 class="fw-bold">Profession Experiences</h3>
+        <p class="text-muted">Where I've worked</p>
+        <div class="list-projects">
+          <div
+            v-for="project in projects"
+            class="d-flex mt-3 w-75 rounded p-3 clickable"
+            v-on:click="openLink(project.link)"
+          >
+            <img
+              v-bind:src="project.image"
+              class="img-thumbnail align-self-center"
+              style="height: 100px; width: 100px"
+              alt="..."
+            />
+            <div class="d-flex flex-column ms-3 align-self-center">
+              <h4 class="fw-bolder">{{ project.name }}</h4>
+              <p class="text-muted" style="margin-top: -4px">
+                {{ project.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end of professional experience -->
+
+      <!-- start projects -->
+      <div class="projects mt-5" id="projects">
+        <h3 class="fw-bold">Projects</h3>
+        <p class="text-muted">
+          Below is a list of personal projects that I worked on to solve
+          challenges.
+        </p>
+        <div class="list-projects row">
+          <div
+            v-for="project in personal_projects"
+            class="col-lg-3 col-sm-1 m-3 clickable p-4"
+            v-on:click="openLink(project.link)"
+          >
+            <img
+              v-bind:src="project.image"
+              class="img-thumbnail align-self-center mb-3"
+              style="height: 100px; width: 100px"
+              alt="..."
+            />
+            <div class="d-flex flex-column align-self-center">
+              <h4 class="fw-bolder">{{ project.name }}</h4>
+              <p class="text-muted" style="margin-top: -4px">
+                {{ project.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end projects -->
+
       <!-- start languages section -->
-      <div class="languages" id="lang">
+      <div class="languages mt-5" id="lang">
         <h3 class="fw-bold">Languages/Frameworks</h3>
         <ul class="nav">
           <li class="nav-item">
@@ -164,36 +222,6 @@
         </div>
       </div>
       <!-- end languages section -->
-
-      <!-- start projects -->
-      <div class="projects mt-4" style="padding-top: 7em" id="projects">
-        <h3 class="fw-bold">Projects</h3>
-        <p class="text-muted">
-          Below is a list of personal projects that I worked on to solve
-          challenges.
-        </p>
-        <div class="list-projects">
-          <div
-            v-for="project in projects"
-            class="d-flex mt-3 w-75 rounded p-3 clickable"
-            v-on:click="openLink(project.link)"
-          >
-            <img
-              v-bind:src="project.image"
-              class="img-thumbnail align-self-center"
-              style="height: 100px; width: 100px"
-              alt="..."
-            />
-            <div class="d-flex flex-column ms-3 align-self-center">
-              <h4 class="fw-bolder">{{ project.name }}</h4>
-              <p class="text-muted" style="margin-top: -4px">
-                {{ project.description }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end projects -->
 
       <!-- start contact -->
       <div class="contacts mt-4" style="padding-top: 7em" id="contacts">
@@ -303,6 +331,23 @@
           },
         ],
         projects: [
+          {
+            name: "Orbit Health",
+            description:
+              "Designed and implemented a web-based appointment system in my internship period for one of the first eHealth startup companies in Ethiopia. The application was first intended as an experiment but was later pushed to production. Node.js,Angular, and MongoDB",
+            image: "https://pbs.twimg.com/profile_images/1351180085869617155/9QiD-W2K_400x400.jpg",
+            link: "https://orbithealth.co/",
+          },
+          {
+            name: "Etech S.C",
+            description:
+              "Contributor to the development of various in-house system, with database design, UI improvement, and requirement gathering. Angular,Java, and PostgreSQL",
+            image:
+              "https://media-exp1.licdn.com/dms/image/C4E0BAQGmjRMUni1Xog/company-logo_200_200/0/1608326125849?e=2159024400&v=beta&t=oOArrEFxggJjOpT7SOyhsRqY7COd7u3tp4GfolGjPRY",
+            link: "https://play.google.com/store/apps/details?id=com.zekaryastadele.phoenix_for_programmers",
+          },
+        ],
+        personal_projects: [
           {
             name: "Phoenix programming",
             description:
