@@ -8,10 +8,7 @@
     <!-- SEO meta tags -->
     <!-- Primary Meta Tags -->
     <title>Portfolio site for Zekaryas Tadele</title>
-    <meta
-      name="title"
-      content="Portfolio site for Zekaryas Tadele"
-    />
+    <meta name="title" content="Portfolio site for Zekaryas Tadele" />
     <meta
       name="description"
       content="Zekaryas Tadele is a software engineer who is always looking for ways to solve challenges."
@@ -20,10 +17,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://zekaryas.netlify.app/" />
-    <meta
-      property="og:title"
-      content="Portfolio site for Zekaryas Tadele"
-    />
+    <meta property="og:title" content="Portfolio site for Zekaryas Tadele" />
     <meta
       property="og:description"
       content="Zekaryas Tadele is a software engineer who is always looking for ways to solve challenges."
@@ -62,6 +56,11 @@
     />
     <!-- my css -->
     <link rel="stylesheet" href="index.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Custom Favicon -->
     <link rel="icon" type="image/x-icon" href="bighead.ico" />
@@ -110,7 +109,13 @@
             profession, and he enjoys working with others.
           </p>
         </div>
-        <img src="./bighead.png" class="w-25 m-0 img-fluid" style="filter: brightness(0.4);" alt="" srcset="" />
+        <img
+          src="./bighead.png"
+          class="w-25 m-0 img-fluid"
+          style="filter: brightness(0.4); transform: scale(0.7);"
+          alt=""
+          srcset=""
+        />
       </div>
       <!-- end main header -->
 
@@ -131,7 +136,11 @@
               alt="..."
             />
             <div class="d-flex flex-column ms-3 align-self-center">
-              <h4 class="fw-bolder">{{ project.name }}</h4>
+              <h4 class="fw-bolder">
+                {{ project.name }}
+                <small class="fs-6 text-muted">{{ project.duration }}</small>
+              </h4>
+              <small> </small>
               <p class="text-muted" style="margin-top: -4px">
                 {{ project.description }}
               </p>
@@ -333,18 +342,21 @@
         projects: [
           {
             name: "Orbit Health",
+            duration: "From May 2019 - July 5 2019",
             description:
               "Designed and implemented a web-based appointment system in my internship period for one of the first eHealth startup companies in Ethiopia. The application was first intended as an experiment but was later pushed to production. Node.js,Angular, and MongoDB",
-            image: "https://pbs.twimg.com/profile_images/1351180085869617155/9QiD-W2K_400x400.jpg",
+            image:
+              "https://pbs.twimg.com/profile_images/1351180085869617155/9QiD-W2K_400x400.jpg",
             link: "https://orbithealth.co/",
           },
           {
             name: "Etech S.C",
+            duration: "From Oct 2021 - May 5 2021",
             description:
               "Contributor to the development of various in-house system, with database design, UI improvement, and requirement gathering. Angular,Java, and PostgreSQL",
             image:
               "https://media-exp1.licdn.com/dms/image/C4E0BAQGmjRMUni1Xog/company-logo_200_200/0/1608326125849?e=2159024400&v=beta&t=oOArrEFxggJjOpT7SOyhsRqY7COd7u3tp4GfolGjPRY",
-            link: "https://play.google.com/store/apps/details?id=com.zekaryastadele.phoenix_for_programmers",
+            link: "https://etechsc.com",
           },
         ],
         personal_projects: [
@@ -371,6 +383,14 @@
             image:
               "https://img.icons8.com/material-outlined/96/ffffff/github.png",
             link: "https://github.com/zekaryas1",
+          },
+          {
+            name: "Code generator",
+            description:
+              "A code generator build for etechsc.com to increase developers productivity. The project has helped reduce feature delivery bu 80%",
+            image:
+              "https://assets.justinmind.com/wp-content/uploads/2020/02/dashboard-example-applify.png",
+            link: "https://thecodegen.netlify.app/",
           },
         ],
         contacts: [
